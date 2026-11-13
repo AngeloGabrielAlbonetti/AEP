@@ -45,7 +45,7 @@ AEP/
 ## Como rodar o projeto
 
 ### Pré-requisitos
-- Java 27
+- Java 27+
 - PostgreSQL rodando na porta padrão (5432)
 - Maven (ou use o `mvnw` incluído no projeto)
 
@@ -62,20 +62,22 @@ AEP/
    CREATE DATABASE aep;
    ```
 
-3. Rode o script `database/script.sql` para criar as tabelas.
+3. Rode o script `database/tabela.sql` no banco `aep` para criar as tabelas.
 
-4. Confira as configurações em `src/main/resources/application.properties`:
+4. Confira as configurações em `src/aep/aep/src/main/resources/application.properties`:
    ```properties
    spring.datasource.url=jdbc:postgresql://localhost:5432/aep
    spring.datasource.username=postgres
    spring.datasource.password=postgres
    ```
+   Se o seu PostgreSQL tiver outro usuário ou senha, altere aqui.
 
-5. Rode a aplicação:
+5. Entre na pasta do projeto Spring Boot e rode a aplicação:
    ```
+   cd src/aep/aep
    ./mvnw spring-boot:run
    ```
-
+   No Windows, use `mvnw.cmd spring-boot:run`.
 6. O menu aparece direto no terminal. Use as opções numeradas para cadastrar usuários, estabelecimentos, lotes e registrar doações ou descartes.
 
 ## Entrega
