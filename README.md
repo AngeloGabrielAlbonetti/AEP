@@ -1,53 +1,83 @@
+# AEP — Controle de Validade e Doação de Alimentos
 
-\# AEP 
+Projeto do 4º semestre de Engenharia de Software (Esoft) que ajuda estabelecimentos de alimentos a controlar a validade dos produtos e a destinar itens próximos do vencimento para **doação** ou **descarte**, em vez de deixar vencer.
 
+Relacionado aos ODS 12 (Consumo e Produção Responsáveis) e ODS 2 (Fome Zero).
 
+## Integrantes
 
-\## Equipe
+- Angelo Gabriel Albonetti — Sprint 1 (cadastro de produtos com validade) e Sprint 4 (relatórios e métricas)
+- Leonardo — Sprint 2 (filtro de lotes por validade)
+- Lênon — Sprint 3 (baixa de estoque por doação ou descarte)
 
+## Tecnologias
 
+- Java + Spring Boot
+- PostgreSQL
+- Interface via console (menu no terminal)
 
-\* Angelo
+## Funcionalidades (RF01 a RF05)
 
-\* Leo
+| Requisito | Descrição |
+|---|---|
+| RF01 | Cadastro de usuários, estabelecimentos e lotes de produtos com data de validade |
+| RF02 | Filtro de lotes por situação: vencido, próximo do vencimento ou dentro do prazo |
+| RF03 | Registro de descarte de um lote, com justificativa |
+| RF04 | Registro de doação de um lote para uma entidade |
+| RF05 | Relatório com o total de itens doados e descartados e seus valores |
 
-\* Lenon
+## Estrutura do repositório
 
+```
+AEP/
+├── src/        # código-fonte Java (Spring Boot)
+├── database/   # script.sql com a criação das tabelas
+└── docs/       # documentação do projeto (diagramas, PDF de especificação)
+```
 
+## Entidades
 
-\## Tecnologias
+- **Usuario**: Administrador ou Operador (herança por `nivel_do_usuario`)
+- **Estabelecimento**: pertence a um Administrador e possui vários Lotes
+- **Lote**: produto com nome, categoria, quantidade, unidade de medida, preço e data de validade
+- **Movimentacao**: Doação ou Descarte de um Lote, feito por um Usuario
 
+## Como rodar o projeto
 
+### Pré-requisitos
+- Java 21+
+- PostgreSQL rodando na porta padrão (5432)
+- Maven (ou use o `mvnw` incluído no projeto)
 
-\* Java
+### Passo a passo
 
-\* Spring Boot
+1. Clone o repositório:
+   ```
+   git clone https://github.com/AngeloGabrielAlbonetti/AEP.git
+   cd AEP
+   ```
 
-\* PostgreSQL
+2. Crie o banco de dados no PostgreSQL:
+   ```sql
+   CREATE DATABASE aep;
+   ```
 
+3. Rode o script `database/script.sql` para criar as tabelas.
 
+4. Confira as configurações em `src/main/resources/application.properties`:
+   ```properties
+   spring.datasource.url=jdbc:postgresql://localhost:5432/aep
+   spring.datasource.username=postgres
+   spring.datasource.password=postgres
+   ```
 
-\## Requisitos Funcionais
+5. Rode a aplicação:
+   ```
+   ./mvnw spring-boot:run
+   ```
 
+6. O menu aparece direto no terminal. Use as opções numeradas para cadastrar usuários, estabelecimentos, lotes e registrar doações ou descartes.
 
+## Entrega
 
-\* \*\*RF01\*\* – O sistema deve permitir o cadastro de produtos alimentícios no estoque, registrando nome, categoria, quantidade, unidade de medida, preço e data de validade de forma rápida.
-
-
-
-\* \*\*RF02\*\* – O sistema deve permitir a consulta e filtragem visual dos lotes cadastrados, identificando automaticamente os produtos que estão com a data de vencimento próxima do limite crítico.
-
-
-
-\* \*\*RF03\*\* – O sistema deve permitir o registro de baixa de alimentos desperdiçados, armazenando a quantidade perdida, a data da ocorrência e a justificativa detalhada do descarte.
-
-
-
-\* \*\*RF04\*\* – O sistema deve permitir o registro de destinação sustentável para itens próximos do vencimento, formalizando a transferência do lote para doação em entidades parceiras ou consumo interno.
-
-
-
-\* \*\*RF05\*\* – O sistema deve permitir a geração de relatórios consolidados de perdas e resgates, possibilitando a exportação de indicadores sobre o impacto financeiro e o volume total reaproveitado.
-
-
-
+Trabalho da disciplina de Engenharia de Software — entrega em 13/11/2026.
