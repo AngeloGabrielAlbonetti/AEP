@@ -1,4 +1,4 @@
-# AEP — Controle de Validade e Doação de Alimentos
+# AEP
 
 Projeto do 4º semestre de Engenharia de Software (Esoft) que ajuda estabelecimentos de alimentos a controlar a validade dos produtos e a destinar itens próximos do vencimento para **doação** ou **descarte**, em vez de deixar vencer.
 
