@@ -142,5 +142,27 @@ public class Lote {
             this.dataValidade = dataValidade;
     }
 
+    public long tempoPraVencimento() {
+        return ChronoUnit.DAYS.between(LocalDate.now(), dataValidade);
+    }
+
+    public boolean vencido(){
+        boolean v = false;
+        if (tempoPraVencimento() <0) {
+            v = true;
+        }
+        return v;
+    }
+
+    public String validar(){
+        long dias = tempoPraVencimento();
+        if(dias < 0)
+            return "Vencido";
+        else if(dias<=3)
+            return "Proximo do vencimento";
+        else
+            return "Não está vencido";
+    }
+
 }
 

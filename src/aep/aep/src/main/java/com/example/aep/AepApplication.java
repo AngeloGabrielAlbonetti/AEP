@@ -199,7 +199,14 @@ public class AepApplication {
 							}
 							break;
 						case 7:
-
+							System.out.printf("Situação ");
+							List<Lote> loteList = entityManager.createQuery("select l from Lote l order by l.dataValidade", Lote.class).getResultList();
+							if (!loteList.isEmpty()){
+								for (Lote l : loteList) {
+									System.out.println(l.getNomeProduto()+"|"+l.validar()+"|"+l.getDataValidade()+"|"+l.tempoPraVencimento());
+								}
+							}else
+								System.out.println("Não existe lote");
 							break;
 						case 8:
 
