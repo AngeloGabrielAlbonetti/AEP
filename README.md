@@ -45,7 +45,7 @@ AEP/
 ## Como rodar o projeto
 
 ### Pré-requisitos
-- Java 27+
+- Java 27
 - PostgreSQL rodando na porta padrão (5432)
 - Maven (ou use o `mvnw` incluído no projeto)
 
