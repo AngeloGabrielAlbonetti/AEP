@@ -163,6 +163,14 @@ public class Lote {
         else
             return "Não está vencido";
     }
+    public void estoqueBaixa(Integer qntbaixa){
+        if (qntbaixa == null || qntbaixa <= 0)
+            throw new IllegalArgumentException("A quantidade invalida");
+        else if (qntbaixa > quantidade)
+            throw new IllegalArgumentException("insuficiente");
+        else
+            this.quantidade -= qntbaixa;
+    }
 
 }
 
