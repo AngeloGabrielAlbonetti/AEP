@@ -2,8 +2,9 @@ package com.example.aep;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
+
 @Entity
-@DiscriminatorValue("Administrador")
+@DiscriminatorValue("ADMINISTRADOR")
 public class Administrador extends Usuario{
     protected Administrador(){}
 

@@ -3,6 +3,7 @@ package com.example.aep;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
+
 @Entity
 @DiscriminatorValue("OPERADOR")
 public class Operador extends Usuario{

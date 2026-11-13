@@ -1,7 +1,10 @@
 package com.example.aep;
 import jakarta.persistence.*;
-
 import java.util.ArrayList;
+import jakarta.persistence.*;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "estabelecimento")
@@ -17,13 +20,21 @@ public class Estabelecimento {
     @Column(length = 200)
     private String codigo;
     @OneToMany(mappedBy = "estabelecimento", cascade = CascadeType.ALL, orphanRemoval = true)
-    ArrayList<Lote>lotes = new ArrayList<>();
+    private List<Lote> lotes = new ArrayList<>();
     protected Estabelecimento() {
     }
     public Estabelecimento(Administrador administrador, String nome, String codigo) {
+        if(administrador == null)
+            throw new IllegalArgumentException("Adiministrador Invalido");
+        if (nome == null || nome.isBlank())
+            throw new IllegalArgumentException("Nome Invalido");
+        if(codigo == null || codigo.isBlank())
+            throw new IllegalArgumentException("Codico invalido");
+
         this.administrador = administrador;
         this.nome = nome;
         this.codigo = codigo;
+
     }
 
     public Integer getId() {
@@ -42,8 +53,13 @@ public class Estabelecimento {
         return codigo;
     }
 
-    public ArrayList<Lote> getLotes() {
+    public List<Lote> getLotes() {
         return lotes;
+    }
+
+    public void adicionarLotes(Estabelecimento estabelecimento, Operador registrarBaixa, String nomeProduto, String categoria, Integer quantidade, String unidadeDeMedida, BigDecimal preco, LocalDate dataValidade){
+        Lote lote = new Lote(estabelecimento,registrarBaixa, nomeProduto, categoria,quantidade,unidadeDeMedida,preco,dataValidade);
+        lotes.add(lote);
     }
 
 }

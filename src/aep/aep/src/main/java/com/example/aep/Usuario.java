@@ -17,8 +17,13 @@ public abstract class Usuario {
     protected Usuario() {}
 
     public Usuario(String nome, String email) {
+        if(nome== null||nome.isBlank())
+            throw new IllegalArgumentException("Nome invalido");
+        if(email == null || !email.contains("@"))
+            throw new IllegalArgumentException("Email invalido");
         this.nome = nome;
         this.email = email;
+
     }
 
     public Integer getId() {
