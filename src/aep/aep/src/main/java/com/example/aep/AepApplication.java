@@ -209,10 +209,46 @@ public class AepApplication {
 								System.out.println("Não existe lote");
 							break;
 						case 8:
+							System.out.println();
+							Lote lote3 = busca(entityManager, scanner, Lote.class, "select lote from Lote lote order by lote.id");
+							Operador operador1= busca(entityManager, scanner, Operador.class, "select operador from Operador operador order by operador.id");
+							System.out.println("Quantidade que irar doar");
+							int qnt = Integer.parseInt(scanner.nextLine().trim());
+							System.out.print("Data (dd/MM/aaaa, vazio = hoje)");
+							String data = scanner.nextLine().trim();
+							LocalDate localDate;
+							if (data.isBlank())
+								localDate = LocalDate.now();
+							else
+								localDate = LocalDate.parse(data, date);
+							System.out.println("Qual vai ser a entidade");
+							String entidade = scanner.nextLine();
 
+							Doacao doacao = new Doacao(lote3, qnt, localDate, entidade, operador1);
+							entityManager.persist(doacao);
+
+							System.out.println("Realizado com sucesso" + lote3.getQuantidade());
 							break;
 						case 9:
+							Lote lote4 = busca(entityManager, scanner, Lote.class, "select lote from Lote lote order by lote.id");
+							Operador operador2= busca(entityManager, scanner, Operador.class, "select operador from Operador operador order by operador.id");
+							System.out.println("" +
+									"Quantidade que irá descartar");
+							int qnt1 = Integer.parseInt(scanner.nextLine().trim());
+							System.out.print("Data (dd/MM/aaaa, vazio = hoje)");
+							String data1 = scanner.nextLine().trim();
+							LocalDate localDate1;
+							if (data1.isBlank())
+								localDate1 = LocalDate.now();
+							else
+								localDate1 = LocalDate.parse(data1, date);
+							System.out.println("Justificativa do descarte");
+							String jus = scanner.nextLine();
 
+							Descarte descarte = new Descarte(lote4, localDate1, qnt1, jus, operador2);
+							entityManager.persist(descarte);
+
+							System.out.println("Realizado com sucesso" + lote4.getQuantidade());
 							break;
 
 						case 10:
