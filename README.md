@@ -20,11 +20,11 @@ Relacionado aos ODS 12 (Consumo e Produção Responsáveis) e ODS 2 (Fome Zero).
 
 | Requisito | Descrição |
 |---|---|
-| RF01 | Cadastro de usuários, estabelecimentos e lotes de produtos com data de validade |
+| RF01 | Cadastro de produtos com nome, categoria, quantidade, unidade de medida, preço e validade |
 | RF02 | Filtro de lotes por situação: vencido, próximo do vencimento ou dentro do prazo |
-| RF03 | Registro de descarte de um lote, com justificativa |
-| RF04 | Registro de doação de um lote para uma entidade |
-| RF05 | Relatório com o total de itens doados e descartados e seus valores |
+| RF03 | Baixa de desperdício com quantidade perdida, data da ocorrência e justificativa detalhada|
+| RF04 |Doação para entidades parceiras ou consumo interno |
+| RF05 | Relatórios de perdas e resgates, com exportação dos indicadores de impacto financeiro e volume reaproveitado|
 
 ## Estrutura do repositório
 
